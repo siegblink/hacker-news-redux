@@ -1,9 +1,11 @@
 import React from 'react'
 import './Story.css'
-
 import ButtonInline from './Button'
 
-export default function Story({ story, columns, onArchive }) {
+import { connect } from 'react-redux'
+import { doArchiveStory } from '../actions/archive'
+
+function Story({ story, columns, onArchive }) {
   const { title, url, author, num_comments, points, objectID } = story
   return (
     <div className='story'>
@@ -19,3 +21,16 @@ export default function Story({ story, columns, onArchive }) {
     </div>
   )
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    onArchive: function(id) {
+      dispatch(doArchiveStory(id))
+    },
+  }
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(Story)
