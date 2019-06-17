@@ -7,5 +7,5 @@ A project derived from Robin Wieruch's React Redux Tutorial 2019
 - git clone `https://github.com/siegblink/hacker-news-redux.git`
 - `cd hacker-rank-redux`
 - `npm install` or `yarn install`
-- `npm start`
+- `npm start` or `yarn start`
 - visit `http://localhost:3000/`
