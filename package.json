@@ -1,5 +1,5 @@
 {
-  "name": "redux-app",
+  "name": "hacker-news-redux",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
