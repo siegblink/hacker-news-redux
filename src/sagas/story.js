@@ -1,11 +1,6 @@
 import { call, put } from 'redux-saga/effects'
 import { doAddStories } from '../actions/story'
-
-const HN_BASE_URL = 'http://hn.algolia.com/api/v1/search?query='
-
-function fetchStories(query) {
-  return fetch(HN_BASE_URL + query).then(response => response.json())
-}
+import { fetchStories } from '../api/story'
 
 export default function* handleFetchStories(action) {
   const { query } = action

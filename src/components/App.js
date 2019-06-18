@@ -4,7 +4,7 @@ import './App.css'
 import Stories from './Stories'
 import SearchStories from './SearchStories'
 
-export default function App({ stories, onArchive }) {
+export default function App() {
   return (
     <div className='app'>
       <div className='interactions'>
