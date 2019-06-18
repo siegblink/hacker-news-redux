@@ -1,5 +1,9 @@
+export function getFetchError({ storyState }) {
+  return storyState.error
+}
+
 export function getReadableStories({ storyState, archiveState }) {
-  return storyState.filter(isNotArchived(archiveState))
+  return storyState.stories.filter(isNotArchived(archiveState))
 }
 
 function isNotArchived(archivedIds) {

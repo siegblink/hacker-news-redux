@@ -3,7 +3,7 @@ import './Stories.css'
 import Story from './Story'
 
 import { connect } from 'react-redux'
-import { getReadableStories } from '../selectors/story'
+import { getReadableStories, getFetchError } from '../selectors/story'
 
 const COLUMNS = {
   title: {
@@ -27,10 +27,12 @@ const COLUMNS = {
   },
 }
 
-function Stories({ stories }) {
+function Stories({ stories, error }) {
   return (
     <div className='stories'>
       <StoriesHeader columns={COLUMNS} />
+
+      {error && <p className='error'>Something went wrong ...</p>}
 
       {(stories || []).map(story => (
         <Story key={story.objectID} story={story} columns={COLUMNS} />
@@ -54,6 +56,7 @@ function StoriesHeader({ columns }) {
 function mapStateToProps(state) {
   return {
     stories: getReadableStories(state),
+    error: getFetchError(state),
   }
 }
 
