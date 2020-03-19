@@ -2,20 +2,37 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { doFetchStories } from '../actions/story'
 
+const inputStyles = {
+  width: '300px',
+  fontSize: '16px',
+}
+const buttonStyles = {
+  fontSize: '16px',
+  paddingLeft: '20px',
+  paddingRight: '20px',
+  borderRadius: '3px',
+  background: '#c0c0c0',
+  color: '#333'
+}
+
 function Button({ type, children }) {
-  return <button type={type}>{children}</button>
+  return (
+    <button type={type} style={buttonStyles}>
+      {children}
+    </button>
+  )
 }
 
 function SearchStories(props) {
   const [state, setState] = useState({ query: '' })
 
   function onSubmit(event) {
+    event.preventDefault()
     const { query } = state
     if (query) {
       props.onFetchStories(query)
       setState({ query: '' })
     }
-    event.preventDefault()
   }
 
   function onChange(event) {
@@ -25,7 +42,12 @@ function SearchStories(props) {
 
   return (
     <form onSubmit={onSubmit}>
-      <input type='text' value={state.query} onChange={onChange} />
+      <input
+        type='text'
+        value={state.query}
+        onChange={onChange}
+        style={inputStyles}
+      />
       <Button type='submit'>Search</Button>
     </form>
   )
@@ -39,7 +61,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SearchStories)
+export default connect(null, mapDispatchToProps)(SearchStories)
